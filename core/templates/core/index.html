@@ -24,7 +24,6 @@
 </head>
 
 <body id="page-top">
-
   <!-- Navigation -->
   <a class="menu-toggle rounded" href="#">
     <i class="fas fa-bars"></i>
@@ -55,7 +54,7 @@
   <!-- Header -->
   <header class="masthead d-flex">
     <div class="container text-center my-auto">
-      <h1 class="mb-1">Stylish Portfolio</h1>
+      <h1 class="mb-1">TITULO</h1>
       <h3 class="mb-5">
         <em>A Free Bootstrap Theme by Start Bootstrap</em>
       </h3>
@@ -136,50 +135,25 @@
         <h2 class="mb-5">Recent Projects</h2>
       </div>
       <div class="row no-gutters">
+      {% block content %}
+      {% for project in projects %} 
         <div class="col-lg-6">
+        {% if project.link %}
+          <a class="portfolio-item" href="{{project.link}}">
+        {% else %}
           <a class="portfolio-item" href="#">
+        {% endif %}
             <span class="caption">
               <span class="caption-content">
-                <h2>Stationary</h2>
-                <p class="mb-0">A yellow pencil with envelopes on a clean, blue backdrop!</p>
+                <h2>{{project.title}}</h2>
+                <p class="mb-0">{{project.description}}</p>
               </span>
             </span>
-            <img class="img-fluid" src="{% static 'core/img/portfolio-1.jpg' %}" alt="">
+            <img class="img-fluid" src="{{project.image.url}}" alt="">
           </a>
         </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Ice Cream</h2>
-                <p class="mb-0">A dark blue background with a colored pencil, a clip, and a tiny ice cream cone!</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="{% static 'core/img/portfolio-2.jpg' %}" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Strawberries</h2>
-                <p class="mb-0">Strawberries are such a tasty snack, especially with a little sugar on top!</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="{% static 'core/img/portfolio-3.jpg' %}" alt="">
-          </a>
-        </div>
-        <div class="col-lg-6">
-          <a class="portfolio-item" href="#">
-            <span class="caption">
-              <span class="caption-content">
-                <h2>Workspace</h2>
-                <p class="mb-0">A yellow workspace with some scissors, pencils, and other objects.</p>
-              </span>
-            </span>
-            <img class="img-fluid" src="{% static 'core/img/portfolio-4.jpg' %}" alt="">
-          </a>
-        </div>
+        {% endfor %}
+        {%endblock%}
       </div>
     </div>
   </section>
